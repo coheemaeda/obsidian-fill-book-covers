@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  使用例: パスを自分の環境に合わせて書き換え、~/Library/LaunchAgents/ にコピーして load。
+  API キーは plist に書かず、run_fill_book_covers.sh と同じディレクトリの .env で渡すこと。
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.example.bookcover</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/path/to/obsidian-fill-book-covers/run_fill_book_covers.sh</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>12</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/your-user/Library/Logs/fill_book_covers.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/your-user/Library/Logs/fill_book_covers.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>OBSIDIAN_VAULT_ROOT</key>
+        <string>/path/to/your/vault</string>
+    </dict>
+</dict>
+</plist>
